@@ -14,7 +14,7 @@ _feroxbuster() {
     fi
 
     local context curcontext="$curcontext" state line
-    _arguments "${_arguments_options[@]}" \
+    _arguments "${_arguments_options[@]}" : \
 '-u+[The target URL (required, unless \[--stdin || --resume-from\] used)]:URL:_urls' \
 '--url=[The target URL (required, unless \[--stdin || --resume-from\] used)]:URL:_urls' \
 '(-u --url)--resume-from=[State file from which to resume a partially complete scan (ex. --resume-from ferox-1606586780.state)]:STATE_FILE:_files' \
@@ -24,8 +24,8 @@ _feroxbuster() {
 '--replay-proxy=[Send only unfiltered requests through a Replay Proxy, instead of all requests]:REPLAY_PROXY:_urls' \
 '*-R+[Status Codes to send through a Replay Proxy when found (default\: --status-codes value)]:REPLAY_CODE: ' \
 '*--replay-codes=[Status Codes to send through a Replay Proxy when found (default\: --status-codes value)]:REPLAY_CODE: ' \
-'-a+[Sets the User-Agent (default\: feroxbuster/2.10.3)]:USER_AGENT: ' \
-'--user-agent=[Sets the User-Agent (default\: feroxbuster/2.10.3)]:USER_AGENT: ' \
+'-a+[Sets the User-Agent (default\: feroxbuster/2.10.4)]:USER_AGENT: ' \
+'--user-agent=[Sets the User-Agent (default\: feroxbuster/2.10.4)]:USER_AGENT: ' \
 '*-x+[File extension(s) to search for (ex\: -x php -x pdf js); reads values (newline-separated) from file if input starts with an @ (ex\: @ext.txt)]:FILE_EXTENSION: ' \
 '*--extensions=[File extension(s) to search for (ex\: -x php -x pdf js); reads values (newline-separated) from file if input starts with an @ (ex\: @ext.txt)]:FILE_EXTENSION: ' \
 '*-m+[Which HTTP request method(s) should be sent (default\: GET)]:HTTP_METHODS: ' \
@@ -40,8 +40,8 @@ _feroxbuster() {
 '*--dont-scan=[URL(s) or Regex Pattern(s) to exclude from recursion/scans]:URL: ' \
 '*-S+[Filter out messages of a particular size (ex\: -S 5120 -S 4927,1970)]:SIZE: ' \
 '*--filter-size=[Filter out messages of a particular size (ex\: -S 5120 -S 4927,1970)]:SIZE: ' \
-'*-X+[Filter out messages via regular expression matching on the response'\''s body (ex\: -X '\''^ignore me\$'\'')]:REGEX: ' \
-'*--filter-regex=[Filter out messages via regular expression matching on the response'\''s body (ex\: -X '\''^ignore me\$'\'')]:REGEX: ' \
+'*-X+[Filter out messages via regular expression matching on the response'\''s body/headers (ex\: -X '\''^ignore me\$'\'')]:REGEX: ' \
+'*--filter-regex=[Filter out messages via regular expression matching on the response'\''s body/headers (ex\: -X '\''^ignore me\$'\'')]:REGEX: ' \
 '*-W+[Filter out messages of a particular word count (ex\: -W 312 -W 91,82)]:WORDS: ' \
 '*--filter-words=[Filter out messages of a particular word count (ex\: -W 312 -W 91,82)]:WORDS: ' \
 '*-N+[Filter out messages of a particular line count (ex\: -N 20 -N 31,30)]:LINES: ' \
@@ -62,7 +62,7 @@ _feroxbuster() {
 '--depth=[Maximum recursion depth, a depth of 0 is infinite recursion (default\: 4)]:RECURSION_DEPTH: ' \
 '-L+[Limit total number of concurrent scans (default\: 0, i.e. no limit)]:SCAN_LIMIT: ' \
 '--scan-limit=[Limit total number of concurrent scans (default\: 0, i.e. no limit)]:SCAN_LIMIT: ' \
-'(-v --verbosity)--parallel=[Run parallel feroxbuster instances (one child process per url passed via stdin)]:PARALLEL_SCANS: ' \
+'(-v --verbosity -u --url)--parallel=[Run parallel feroxbuster instances (one child process per url passed via stdin)]:PARALLEL_SCANS: ' \
 '(--auto-tune)--rate-limit=[Limit number of requests per second (per directory) (default\: 0, i.e. no limit)]:RATE_LIMIT: ' \
 '--time-limit=[Limit total run time of all scans (ex\: --time-limit 10m)]:TIME_SPEC: ' \
 '-w+[Path or URL of the wordlist]:FILE:_files' \

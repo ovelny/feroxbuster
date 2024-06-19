@@ -291,7 +291,7 @@ pub fn initialize() -> Command {
                 .use_value_delimiter(true)
                 .help_heading("Response filters")
                 .help(
-                    "Filter out messages via regular expression matching on the response's body (ex: -X '^ignore me$')",
+                    "Filter out messages via regular expression matching on the response's body/headers (ex: -X '^ignore me$')",
                 ),
         )
         .arg(
@@ -486,6 +486,7 @@ pub fn initialize() -> Command {
                 .long("parallel")
                 .value_name("PARALLEL_SCANS")
                 .conflicts_with("verbosity")
+                .conflicts_with("url")
                 .num_args(1)
                 .requires("stdin")
                 .help_heading("Scan settings")
